@@ -6,17 +6,17 @@
         <v-card-text>
           <v-layout row>
             <v-flex md4>
-              <v-subheader>Airplane Manufacturer:</v-subheader>
+              <v-subheader class="mt-10">Airplane Manufacturer:</v-subheader>
             </v-flex>
             <v-flex md8>
               <v-text-field v-model="flightDetails.Man" readonly>
               </v-text-field>
             </v-flex>
           </v-layout>
-          
+
           <v-layout row>
             <v-flex md4>
-              <v-subheader>Airplane Model:</v-subheader>
+              <v-subheader class="mt-10">Airplane Model:</v-subheader>
             </v-flex>
             <v-flex md8>
               <v-text-field v-model="flightDetails.Mdl" readonly>
@@ -28,17 +28,17 @@
 
           <v-layout row>
             <v-flex md4>
-              <v-subheader>Destination Airport:</v-subheader>
+              <v-subheader class="mt-10">Destination Airport:</v-subheader>
             </v-flex>
             <v-flex md8>
               <v-text-field v-model="flightDetails.To" readonly>
               </v-text-field>
             </v-flex>
           </v-layout>
-          
+
           <v-layout row>
             <v-flex md4>
-              <v-subheader>Origin Airport:</v-subheader>
+              <v-subheader class="mt-10">Origin Airport:</v-subheader>
             </v-flex>
             <v-flex md8>
               <v-text-field v-model="flightDetails.From" readonly>
@@ -50,14 +50,14 @@
 
           <v-layout row>
             <v-flex md4>
-              <v-subheader>Airlane Company:</v-subheader>
+              <v-subheader class="mt-10">Airlane Company:</v-subheader>
             </v-flex>
             <v-flex md8>
               <v-text-field v-model="flightDetails.Op" readonly>
               </v-text-field>
             </v-flex>
           </v-layout>
-          
+
           <!-- <img :src="logo"> -->
         </v-card-text>
         <v-card-actions>
@@ -92,7 +92,18 @@ export default {
       this.detailsModal = false
       this.$emit('close')
     }
+  },
+  created () {
+    document.addEventListener('keyup', this.closeModal)
+  },
+  beforeDestroy () {
+    document.removeEventListener('keyup', this.closeModal)
   }
-
 }
 </script>
+
+<style>
+  .mt-10 {
+    margin-top: 10px;
+  }
+</style>

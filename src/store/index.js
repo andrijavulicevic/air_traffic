@@ -46,9 +46,7 @@ const actions = {
           commit('setError', err.message)
           commit('toggleLoading')
           commit('setLoaded', false)
-          console.error(err.message)
         } else {
-          console.log(data)
           commit('setData', data)
           commit('setLastDv', data.lastDv)
           commit('toggleLoading')
@@ -62,11 +60,10 @@ const actions = {
       null, (err, data) => {
         if (err) {
           commit('setError', err.message)
-          console.error(err.message)
         } else {
-          console.log(data)
           commit('setData', data)
           commit('setLastDv', data.lastDv)
+          commit('setError', null)
         }
       })
   }

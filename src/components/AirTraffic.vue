@@ -2,7 +2,7 @@
   <div class="main">
     <v-layout v-if="locationDisabled" row justify-center>
       <v-flex md10 offset-1>
-        <v-alert :value="true" type="warning display-1">
+        <v-alert :value="true" type="warning" class="display-1">
           Please, enable location in browser to continue to application!
         </v-alert>
       </v-flex>
@@ -19,6 +19,7 @@
             :pagination.sync="pagination"
             :headers="headers"
             :items="data.acList"
+            :rowsPerPageText="rowsPerPageText"
             class="elevation-1">
             <template slot="items" slot-scope="props">
               <tr @click="openDetails(props.item)">
@@ -36,6 +37,14 @@
         </v-flex>
       </v-layout>
     </div>
+
+    <v-layout v-if="error" row justify-center>
+      <v-flex md10 offset-1>
+        <v-alert :value="true" type="error" class="display-1">
+          {{error}}
+        </v-alert>
+      </v-flex>
+    </v-layout>
 
     <flight-details
       v-if="showDetails"
@@ -66,9 +75,8 @@ export default {
       ],
       pagination: {
         sortBy: 'Alt',
-        sortType: 'asc'
+        sortType: 'desc'
       },
-      rowsPerPageItems: [ 10, 20, 50, { text: 'All', 'value': -1 } ],
       rowsPerPageText: 'Flights per page:',
       search: '',
       showDetails: false,
@@ -103,7 +111,6 @@ export default {
       maximumAge: 0
     })
       .then(coordinates => {
-        console.log(coordinates)
         this.location = coordinates
         this.$store.dispatch('loadData', {...coordinates})
       })
