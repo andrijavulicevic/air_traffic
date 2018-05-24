@@ -4,14 +4,61 @@
       <v-card>
         <v-card-title class="headline">Flight {{ flightDetails.Reg }} details</v-card-title>
         <v-card-text>
-          <p>Airplane Manufacturer: <span>{{ flightDetails.Man }}</span></p>
-          <v-spacer></v-spacer>
-          <p>Airplane Model: <span>{{ flightDetails.Mdl }}</span></p>
-          <v-spacer></v-spacer>
-          <p>Destination Airport: <span>{{ flightDetails.To }}</span></p>
-          <p>Origin Airport: <span>{{ flightDetails.From }}</span></p>
-          <p>Airlane Company: <span>{{ flightDetails.Op }}</span></p>
-          <img :src="logo">
+          <v-layout row>
+            <v-flex md4>
+              <v-subheader>Airplane Manufacturer:</v-subheader>
+            </v-flex>
+            <v-flex md8>
+              <v-text-field v-model="flightDetails.Man" readonly>
+              </v-text-field>
+            </v-flex>
+          </v-layout>
+          
+          <v-layout row>
+            <v-flex md4>
+              <v-subheader>Airplane Model:</v-subheader>
+            </v-flex>
+            <v-flex md8>
+              <v-text-field v-model="flightDetails.Mdl" readonly>
+              </v-text-field>
+            </v-flex>
+          </v-layout>
+
+          <v-divider></v-divider>
+
+          <v-layout row>
+            <v-flex md4>
+              <v-subheader>Destination Airport:</v-subheader>
+            </v-flex>
+            <v-flex md8>
+              <v-text-field v-model="flightDetails.To" readonly>
+              </v-text-field>
+            </v-flex>
+          </v-layout>
+          
+          <v-layout row>
+            <v-flex md4>
+              <v-subheader>Origin Airport:</v-subheader>
+            </v-flex>
+            <v-flex md8>
+              <v-text-field v-model="flightDetails.From" readonly>
+              </v-text-field>
+            </v-flex>
+          </v-layout>
+
+          <v-divider></v-divider>
+
+          <v-layout row>
+            <v-flex md4>
+              <v-subheader>Airlane Company:</v-subheader>
+            </v-flex>
+            <v-flex md8>
+              <v-text-field v-model="flightDetails.Op" readonly>
+              </v-text-field>
+            </v-flex>
+          </v-layout>
+          
+          <!-- <img :src="logo"> -->
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
